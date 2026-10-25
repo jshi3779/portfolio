@@ -184,6 +184,7 @@ window.addEventListener('pointerup', (e) => {
 // 绘画 / 动画
 function fill(sel, items, kind, hint) {
   const el = $(sel);
+  if (!el) return;
   if (!items.length) {
     el.innerHTML = `<div class="slot"><div><b>${kind}即将加入</b>${hint}</div></div>`;
     return;
@@ -208,12 +209,14 @@ function openBook(p) {
   lastFocus = document.activeElement;
   const img = $('#r-img');
   if (p.img) { img.src = p.img; img.alt = p.name; img.parentElement.style.background = '#000'; }
-  else { img.removeAttribute('src'); img.parentElement.style.background = p.cover; }
+  else { img.removeAttribute('src'); img.alt = ''; img.parentElement.style.background = p.cover; }
   $('#r-meta').textContent = p.meta;
   $('#r-title').textContent = p.name;
   $('#r-sub').textContent = p.sub || '';
   $('#r-chips').innerHTML = (p.chips || []).map((c) => `<span>${c}</span>`).join('');
   $('#r-text').innerHTML = p.text.map(([h, t]) => `<h4>${h}</h4><p>${t}</p>`).join('');
+  img.hidden = !p.img;
+  reader.querySelector('.book').setAttribute('aria-labelledby', 'r-title');
   reader.hidden = false;
   document.body.style.overflow = 'hidden';
   reader.querySelector('.close').focus();
@@ -229,10 +232,53 @@ document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !reader.
 // 深色模式
 const root = document.documentElement;
 try { const t = localStorage.getItem('theme'); if (t) root.dataset.theme = t; } catch {}
-$('#theme').addEventListener('click', () => {
+$('#theme')?.addEventListener('click', () => {
   const dark = getComputedStyle(root).getPropertyValue('--paper').trim() === '#1C1715';
   root.dataset.theme = dark ? 'light' : 'dark';
   try { localStorage.setItem('theme', root.dataset.theme); } catch {}
 });
 
+function fitRoom() {
+  const portrait = window.innerWidth < 700;
+  const width = portrait ? 700 : 1280;
+  const height = portrait ? 1040 : 820;
+  const room = $('#room');
+  room.classList.toggle('portrait', portrait);
+  room.style.width = width + 'px';
+  room.style.height = height + 'px';
+  room.style.transform = 'translate(-50%, -50%) scale(' + Math.min(window.innerWidth / width, window.innerHeight / height) + ')';
+}
+window.addEventListener('resize', () => { fitRoom(); fit(); });
+fitRoom();
 fit();
+
+document.querySelectorAll('[data-project]').forEach(el => {
+  el.addEventListener('click', () => openBook(projects[Number(el.dataset.project)]));
+});
+$('#drawing-note').addEventListener('click', () => openBook({
+  name: '绘画收藏', meta: 'DRAWINGS / 持续整理中', cover: '#e4ead8',
+  sub: '一些观察，一些纸上的想法。', chips: ['绘画'],
+  text: [['整理中', '绘画作品将在这里慢慢加入。']]
+}));
+$('#motion-note').addEventListener('click', () => openBook({
+  name: '小动画', meta: 'MOTION / 持续整理中', cover: '#dfe6f2',
+  sub: '让想法动起来。', chips: ['动画', '动态实验'],
+  text: [['整理中', '小动画作品将在这里慢慢加入。']]
+}));
+$('#about-note').addEventListener('click', () => openBook({
+  name: '你好，我是史嘉欣。', meta: 'Jiaxin Shi / LIBRARY CARD', cover: '#eee8d9',
+  sub: '格拉斯哥艺术学院 GSA', chips: ['UI / 交互 / 产品设计', '服务设计', 'AI 工作流'],
+  text: [['关于我', '在研究、图像和交互之间探索，关注设计如何连接真实的生活与体验。'],
+    ['经历', '2021—2023 鱼肚白动画 · 制片与美术'],
+    ['工具', 'Figma · Photoshop · Illustrator · AI 工作流'],
+    ['联系', '<a href="mailto:J.Shi3@student.gsa.ac.uk">J.Shi3@student.gsa.ac.uk ↗</a>']]
+}));
+// Keep dialog keyboard focus inside the open reader.
+reader.addEventListener('keydown', e => {
+  if (e.key !== 'Tab') return;
+  const focusable = [...reader.querySelectorAll('button, a[href], [tabindex="0"]')];
+  const first = focusable[0], last = focusable[focusable.length - 1];
+  if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+  else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+});
+

@@ -1,74 +1,71 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>史嘉欣 · 作品集</title>
-<meta name="description" content="史嘉欣 Jiaxin Shi — UI / 交互 / 产品设计作品集">
+<title>史嘉欣 · 一面作品墙</title>
+<meta name="description" content="史嘉欣 Jiaxin Shi — UI / 交互 / 产品设计，一面收藏作品与灵感的墙。">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="wall.css">
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="#top">史嘉欣 <span>Jiaxin Shi</span></a>
-  <nav>
-    <a href="#shelf-projects">项目</a>
-    <a href="#shelf-draw">绘画</a>
-    <a href="#shelf-motion">动画</a>
-    <a href="#about">关于</a>
-    <button id="theme" aria-label="切换深色模式">◐</button>
-  </nav>
-</header>
+<main class="wall" id="top" aria-label="史嘉欣的作品墙">
+  <div class="room" id="room">
+    <header class="wall-heading">
+      <a class="brand" href="#top">史嘉欣 <span>Jiaxin Shi</span></a>
+      <p class="eyebrow">A SMALL LIBRARY OF THINGS I MAKE</p>
+      <h1>设计，也收藏<br>一点<span>好奇心。</span></h1>
+      <p class="intro">UI / 交互 / 产品设计<br>欢迎来到我的一面作品墙。</p>
+      <span class="edition">SELECTED WORKS · 2022—2026</span>
+    </header>
 
-<main id="top">
-  <section class="hero">
-    <p class="tag">PORTFOLIO · 2022—26</p>
-    <h1>UI / 交互<br>产品设计<span class="hl">作品集</span></h1>
-    <p class="lead">我把作品当作书来收藏。每一本书脊都是一个项目,点开它,就是一段设计的来龙去脉。</p>
-  </section>
+    <section class="wall-notes" aria-label="墙上的其他作品">
+      <button class="wall-photo photo-one" data-project="4" aria-label="查看动画工作室项目">
+        <span class="tape" aria-hidden="true"></span>
+        <img src="assets/animation-studio.png" alt="动画工作室项目作品" draggable="false">
+        <span class="photo-caption">动画工作室 <small>2021—23 ↗</small></span>
+      </button>
+      <button class="wall-photo photo-two" id="drawing-note" aria-label="查看绘画收藏">
+        <span class="tape" aria-hidden="true"></span>
+        <span class="drawing-art" aria-hidden="true"><span class="sketch-circle"></span><span class="sketch-vase"></span><i>little things,<br>close observations.</i></span>
+        <span class="photo-caption">绘画收藏 <small>COMING SOON</small></span>
+      </button>
+      <button class="motion-note" id="motion-note" aria-label="查看小动画收藏">
+        <span class="pin" aria-hidden="true"></span>
+        <span class="note-index">FIELD NOTES / 03</span>
+        <strong>让想法<br>动起来。</strong>
+        <span class="note-bottom">小动画 / 整理中 <b>↗</b></span>
+      </button>
+    </section>
 
-  <section class="home-shelf" id="shelf-projects" aria-label="项目书架">
-    <div class="stage-wrap" id="stageWrap">
-      <div class="stage" id="stage" tabindex="0">
-        <div class="shelf-line"></div>
-        <div class="row" id="row"></div>
+    <section class="home-shelf" id="shelf-projects" aria-label="主项目单层书架">
+      <div class="shelf-label"><span>01 — SELECTED PROJECTS</span><span>我的项目书架</span></div>
+      <div class="stage-wrap" id="stageWrap">
+        <div class="stage" id="stage" tabindex="0" aria-label="使用左右方向键切换项目">
+          <div class="shelf-line"></div>
+          <div class="row" id="row"></div>
+        </div>
       </div>
-    </div>
-    <div class="shelf-ui">
-      <button class="arrow" id="prev" aria-label="上一本">←</button>
-      <div class="dots" id="dots"></div>
-      <button class="arrow" id="next" aria-label="下一本">→</button>
-    </div>
-    <p class="hint" id="hint">拖动或点书脊翻书 · 再点一次打开项目</p>
-  </section>
+      <div class="shelf-controls">
+        <p class="hint" id="hint">点书脊翻阅 · 再点封面打开项目</p>
+        <div class="shelf-ui">
+          <button class="arrow" id="prev" aria-label="上一本">←</button>
+          <div class="dots" id="dots"></div>
+          <button class="arrow" id="next" aria-label="下一本">→</button>
+        </div>
+      </div>
+    </section>
 
-  <section class="shelf-block" id="shelf-draw">
-    <div class="shelf-title"><span>02</span> 绘画 <em>Drawings</em></div>
-    <div class="grid" id="drawings"></div>
-  </section>
-
-  <section class="shelf-block" id="shelf-motion">
-    <div class="shelf-title"><span>03</span> 小动画 <em>Motion</em></div>
-    <div class="grid" id="motions"></div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="card">
-      <p class="tag">LIBRARY CARD · 借阅卡</p>
-      <h2>关于我</h2>
-      <dl>
-        <dt>姓名</dt><dd>史嘉欣 Jiaxin Shi</dd>
-        <dt>学校</dt><dd>格拉斯哥艺术学院 GSA</dd>
-        <dt>方向</dt><dd>UI / 交互 / 产品设计 · 服务设计 · AI 参与的设计工作流</dd>
-        <dt>经历</dt><dd>2021—2023 鱼肚白动画 · 制片与美术</dd>
-        <dt>工具</dt><dd>Figma · Photoshop · Illustrator · AI 工作流</dd>
-        <dt>联系</dt><dd><a href="mailto:J.Shi3@student.gsa.ac.uk">J.Shi3@student.gsa.ac.uk</a></dd>
-      </dl>
-    </div>
-  </section>
+    <button class="library-card" id="about-note" aria-label="查看关于我与联系方式">
+      <span class="tape" aria-hidden="true"></span>
+      <span class="note-index">LIBRARY CARD / 关于我</span>
+      <strong>你好，我是嘉欣。</strong>
+      <span>格拉斯哥艺术学院 · GSA<br>在研究、图像和交互之间探索。</span>
+      <span class="card-link">认识我 / GET IN TOUCH ↗</span>
+    </button>
+    <footer class="wall-footer"><span>© 2026 史嘉欣</span><span>一些作品，一点生活。<i class="footer-dot"></i></span></footer>
+  </div>
 </main>
-
-<footer>© 2026 史嘉欣 · 用纸与色彩搭起来的书架</footer>
-
 <div class="reader" id="reader" hidden>
   <div class="reader-bg" data-close></div>
   <article class="book" role="dialog" aria-modal="true">

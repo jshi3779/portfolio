@@ -1,0 +1,73 @@
+/* One viewport, one wall. Book transforms and carousel timing live unchanged in script.js. */
+:root,:root[data-theme="dark"],:root[data-theme="light"]{--paper:#faf9f5;--ink:#29352e;--muted:#7c8178;--line:#d7d9cf;--card:#fffef9;--red:#dc623e;--yellow:#e8eaa8}
+html,body{width:100%;height:100%;overflow:hidden}
+body{background:var(--paper)}
+button{font:inherit;color:inherit}
+button:focus-visible,a:focus-visible{outline:2px solid #396659;outline-offset:5px}
+.wall{position:fixed;inset:0;overflow:hidden;background:radial-gradient(ellipse at 27% 12%,#fff 0,transparent 65%),#f6f6f1}
+.wall:before{content:"";position:absolute;inset:0;opacity:.24;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23999' filter='url(%23n)' opacity='.19' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
+.room{position:absolute;top:50%;left:50%;transform-origin:center;width:1280px;height:820px}
+.wall-heading{position:absolute;left:80px;top:56px}
+.brand{font-size:20px;letter-spacing:.05em}.brand span{font-size:11px;letter-spacing:0}
+.eyebrow,.edition,.note-index,.shelf-label,.wall-footer{font:10px var(--mono);letter-spacing:.12em}
+.eyebrow{margin-top:28px;color:var(--muted);font-size:9px}
+.wall-heading h1{font-family:var(--serif);font-size:47px;font-weight:500;line-height:1.45;letter-spacing:.03em;margin:12px 0}
+.wall-heading h1 span{position:relative}
+.wall-heading h1 span:after{content:"";height:8px;background:#dce5b9;position:absolute;left:0;right:0;bottom:5px;z-index:-1;transform:rotate(-2deg)}
+.intro{font-size:12px;color:#73796f;line-height:1.9}
+.edition{display:block;margin-top:18px;font-size:9px;color:#8d9187}
+.wall-photo{position:absolute;background:#fffefa;padding:10px 10px 7px;border:0;text-align:left;box-shadow:2px 7px 12px #343b2d19,0 1px 2px #343b2d17;cursor:pointer}
+.photo-one{left:565px;top:72px;width:245px;transform:rotate(-6deg)}
+.photo-one img{display:block;width:225px;height:147px;object-fit:cover}
+.photo-two{left:850px;top:65px;width:173px;transform:rotate(7deg)}
+.tape{position:absolute;z-index:2;top:-12px;left:calc(50% - 29px);width:58px;height:23px;background:#d9d6af99;transform:rotate(-7deg);clip-path:polygon(2% 0,98% 4%,96% 25%,100% 40%,96% 60%,99% 94%,1% 100%,3% 70%,0 40%)}
+.photo-caption{display:flex;justify-content:space-between;gap:8px;padding:10px 1px 1px;font-size:11px}
+.photo-caption small{font:8px var(--mono);color:var(--muted);align-self:center}
+.drawing-art{height:170px;display:block;position:relative;background:#e5e9dc;overflow:hidden}
+.drawing-art i{position:absolute;left:13px;bottom:13px;font:italic 13px Georgia,serif;color:#49634f;line-height:1.3}
+.sketch-circle{position:absolute;width:74px;height:74px;border:1px solid #6a785f;border-radius:50%;left:18px;top:17px}
+.sketch-vase{position:absolute;width:49px;height:85px;border:1px solid #6a785f;border-radius:35% 35% 20% 20%;right:18px;top:37px;transform:rotate(19deg);background:#e5e9dc}
+.motion-note{position:absolute;left:1070px;top:152px;width:142px;padding:19px 15px 12px;background:#e7ecc9;border:0;transform:rotate(-4deg);text-align:left;box-shadow:2px 6px 9px #343b2d18;cursor:pointer}
+.pin{position:absolute;top:7px;left:68px;width:6px;height:6px;border-radius:50%;background:#dc623e;box-shadow:1px 2px 2px #0003}
+.note-index{font-size:8px;color:#6e7865;display:block}
+.motion-note strong{font-family:var(--serif);font-size:23px;line-height:1.5;display:block;margin:12px 0 16px;font-weight:500}
+.note-bottom{display:flex;justify-content:space-between;font-size:9px}
+.home-shelf{position:absolute;left:480px;top:302px;width:650px;max-width:none;padding:0;margin:0}
+.shelf-label{display:flex;justify-content:space-between;padding:0 20px;color:#8d9285;font-size:9px}
+.stage-wrap{overflow:visible}
+.shelf-line{height:13px;border-radius:1px;background:linear-gradient(#dedacb,#cbc5b2);box-shadow:0 2px 1px #aaa38f,0 14px 13px -5px #343b2d26,0 30px 30px -14px #343b2d1a}
+.shelf-line:after{content:"";position:absolute;left:0;right:0;top:13px;height:5px;background:#c0b8a1}
+.face.cover .art{box-shadow:none;border-radius:0;filter:saturate(.85)}
+.face.cover{box-shadow:inset 6px 0 8px -4px #0004,3px 6px 8px #2831261c}
+.shelf-controls{display:flex;align-items:center;justify-content:space-between;margin-top:-5px;padding:0 20px}
+.shelf-ui{margin:0;gap:12px}
+.arrow{width:27px;height:27px;font-size:13px}
+.dots{gap:7px}.dots button{width:5px;height:5px}
+.hint{font-size:9px;color:#8a8f83;margin:0}
+.library-card{position:absolute;left:105px;top:468px;width:251px;padding:24px 22px 17px;text-align:left;background:#f3f0df;border:1px solid #e0decd;border-radius:0;transform:rotate(-3deg);box-shadow:1px 5px 8px #343b2d14;cursor:pointer}
+.library-card strong{font-family:var(--serif);font-size:20px;display:block;margin:19px 0 10px;font-weight:500}
+.library-card>span:not(.tape):not(.note-index){display:block;font-size:10px;color:#73786a}
+.library-card .card-link{border-top:1px solid #d5d4c3;margin-top:17px;padding-top:11px;font-size:8px!important;letter-spacing:.06em}
+.wall-footer{position:absolute;left:80px;right:80px;bottom:26px;padding:0;display:flex;justify-content:space-between;color:#969b8d;font-size:9px}
+.footer-dot{display:inline-block;width:6px;height:6px;background:#a5b384;border-radius:50%;margin-left:12px}
+.reader-bg{background:#26332966;backdrop-filter:blur(5px)}
+.book{background:#faf9f5;max-height:88dvh}
+.book-cover{background:#e6e8dc;min-height:230px}
+.book-cover img[hidden]{display:none}
+.book-cover:has(img[hidden]):after{content:"J.S. / PERSONAL LIBRARY";font:11px var(--mono);letter-spacing:.16em;color:#5b6a54}
+.book-body{max-height:88dvh}
+@media(max-width:760px){.book{grid-template-columns:1fr 1fr}.book-cover img{height:100%}.book-body{padding:24px}.book-body h3{font-size:24px}}
+@media(max-width:500px){.book{grid-template-columns:1fr;overflow:auto}.book-cover{display:none}.book-body{max-height:86dvh}.book-body h3{font-size:23px}}
+.room.portrait .wall-heading{left:42px;top:35px}
+.room.portrait .wall-heading h1{font-size:37px}
+.room.portrait .eyebrow{margin-top:15px;font-size:8px}
+.room.portrait .intro{font-size:11px}
+.room.portrait .edition{margin-top:12px}
+.room.portrait .photo-one{left:360px;top:65px;width:212px}
+.room.portrait .photo-one img{width:192px;height:130px}
+.room.portrait .photo-two{left:465px;top:270px;width:165px}
+.room.portrait .motion-note{left:270px;top:300px}
+.room.portrait .library-card{left:43px;top:338px;width:195px;padding:21px 17px 15px}
+.room.portrait .library-card strong{font-size:17px;margin-top:13px}
+.room.portrait .home-shelf{left:30px;top:535px;width:640px}
+.room.portrait .wall-footer{left:42px;right:42px;bottom:23px}

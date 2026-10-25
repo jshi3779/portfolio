@@ -35,8 +35,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #396659;outline-offset:5p
 .home-shelf{position:absolute;left:480px;top:302px;width:650px;max-width:none;padding:0;margin:0}
 .shelf-label{display:flex;justify-content:space-between;padding:0 20px;color:#8d9285;font-size:9px}
 .stage-wrap{overflow:visible}
-.shelf-line{height:13px;border-radius:1px;background:linear-gradient(#dedacb,#cbc5b2);box-shadow:0 2px 1px #aaa38f,0 14px 13px -5px #343b2d26,0 30px 30px -14px #343b2d1a}
-.shelf-line:after{content:"";position:absolute;left:0;right:0;top:13px;height:5px;background:#c0b8a1}
+.shelf-line{display:none}
 .face.cover .art{box-shadow:none;border-radius:0;filter:saturate(.85)}
 .face.cover{box-shadow:inset 6px 0 8px -4px #0004,3px 6px 8px #2831261c}
 .shelf-controls{display:flex;align-items:center;justify-content:space-between;margin-top:-5px;padding:0 20px}

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>史嘉欣 · 作品集</title>
+<meta name="description" content="史嘉欣 Jiaxin Shi — UI / 交互 / 产品设计作品集">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#top">史嘉欣 <span>Jiaxin Shi</span></a>
+  <nav>
+    <a href="#shelf-projects">项目</a>
+    <a href="#shelf-draw">绘画</a>
+    <a href="#shelf-motion">动画</a>
+    <a href="#about">关于</a>
+    <button id="theme" aria-label="切换深色模式">◐</button>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <p class="tag">PORTFOLIO · 2022—26</p>
+    <h1>UI / 交互<br>产品设计<span class="hl">作品集</span></h1>
+    <p class="lead">我把作品当作书来收藏。每一本书脊都是一个项目,点开它,就是一段设计的来龙去脉。</p>
+  </section>
+
+  <section class="home-shelf" id="shelf-projects" aria-label="项目书架">
+    <div class="stage-wrap" id="stageWrap">
+      <div class="stage" id="stage" tabindex="0">
+        <div class="shelf-line"></div>
+        <div class="row" id="row"></div>
+      </div>
+    </div>
+    <div class="shelf-ui">
+      <button class="arrow" id="prev" aria-label="上一本">←</button>
+      <div class="dots" id="dots"></div>
+      <button class="arrow" id="next" aria-label="下一本">→</button>
+    </div>
+    <p class="hint" id="hint">拖动或点书脊翻书 · 再点一次打开项目</p>
+  </section>
+
+  <section class="shelf-block" id="shelf-draw">
+    <div class="shelf-title"><span>02</span> 绘画 <em>Drawings</em></div>
+    <div class="grid" id="drawings"></div>
+  </section>
+
+  <section class="shelf-block" id="shelf-motion">
+    <div class="shelf-title"><span>03</span> 小动画 <em>Motion</em></div>
+    <div class="grid" id="motions"></div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="card">
+      <p class="tag">LIBRARY CARD · 借阅卡</p>
+      <h2>关于我</h2>
+      <dl>
+        <dt>姓名</dt><dd>史嘉欣 Jiaxin Shi</dd>
+        <dt>学校</dt><dd>格拉斯哥艺术学院 GSA</dd>
+        <dt>方向</dt><dd>UI / 交互 / 产品设计 · 服务设计 · AI 参与的设计工作流</dd>
+        <dt>经历</dt><dd>2021—2023 鱼肚白动画 · 制片与美术</dd>
+        <dt>工具</dt><dd>Figma · Photoshop · Illustrator · AI 工作流</dd>
+        <dt>联系</dt><dd><a href="mailto:J.Shi3@student.gsa.ac.uk">J.Shi3@student.gsa.ac.uk</a></dd>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 史嘉欣 · 用纸与色彩搭起来的书架</footer>
+
+<div class="reader" id="reader" hidden>
+  <div class="reader-bg" data-close></div>
+  <article class="book" role="dialog" aria-modal="true">
+    <button class="close" data-close aria-label="关闭">×</button>
+    <div class="book-cover"><img id="r-img" alt=""></div>
+    <div class="book-body">
+      <p class="tag" id="r-meta"></p>
+      <h3 id="r-title"></h3>
+      <p class="sub" id="r-sub"></p>
+      <div class="chips" id="r-chips"></div>
+      <div id="r-text"></div>
+    </div>
+  </article>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
